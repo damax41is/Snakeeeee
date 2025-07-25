@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+#game {
+    border: 1px solid #333;
+    background-color: #f0f0f0;
+}
