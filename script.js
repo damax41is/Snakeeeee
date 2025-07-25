@@ -38,7 +38,8 @@ window.addEventListener('keydown', e => {
 function gameLoop() {
     const head = { x: snake[0].x + velocity.x, y: snake[0].y + velocity.y };
 
-    if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount || snake.some(seg => seg.x === head.x && seg.y === head.y)) {
+    if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount ||
+        snake.slice(1).some(seg => seg.x === head.x && seg.y === head.y)) {
         alert('Game Over');
         snake = [{ x: 10, y: 10 }];
         velocity = { x: 0, y: 0 };
