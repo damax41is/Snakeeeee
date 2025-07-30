@@ -35,7 +35,25 @@ window.addEventListener('keydown', e => {
     }
 });
 
+function draw() {
+    ctx.fillStyle = '#f0f0f0';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = 'red';
+    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+    ctx.fillStyle = 'green';
+    snake.forEach(seg => {
+        ctx.fillRect(seg.x * gridSize, seg.y * gridSize, gridSize, gridSize);
+    });
+}
+
 function gameLoop() {
+    if (velocity.x === 0 && velocity.y === 0) {
+        draw();
+        return setTimeout(gameLoop, 100);
+    }
+
     const head = { x: snake[0].x + velocity.x, y: snake[0].y + velocity.y };
 
     if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount ||
@@ -60,16 +78,7 @@ function gameLoop() {
         grow -= 1;
     }
 
-    ctx.fillStyle = '#f0f0f0';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = 'red';
-    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
-
-    ctx.fillStyle = 'green';
-    snake.forEach(seg => {
-        ctx.fillRect(seg.x * gridSize, seg.y * gridSize, gridSize, gridSize);
-    });
+    draw();
 
     setTimeout(gameLoop, 100);
 }
