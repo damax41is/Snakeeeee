@@ -1,6 +1,8 @@
 # Snake Game
 
 This is a simple web-based implementation of the classic Snake game.
+The HTML pages now use React and Material UI loaded from public CDNs to render
+the dashboard and game layout.
 
 ## How to Run
 
